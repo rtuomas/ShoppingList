@@ -1,4 +1,4 @@
-### POST 'api/addDead'
+# Shopping List application
 
 This call allows you to add new grave to the database. Takes the information as an object from request. Request is given in the following format (JS):
 
