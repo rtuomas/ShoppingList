@@ -1,19 +1,20 @@
 # Shopping List application
 
-This call allows you to add new grave to the database. Takes the information as an object from request. Request is given in the following format (JS):
+I made this application to ease my shopping trips. Me and my partner use it to avoid buying same products.
 
-```
-newGrave = {
-    firstName,
-    lastName,
-    birthday,
-    died,
-    cemetery,
-    location: {lat, long},
-    category
-}
-```
+When application is opened, it firstly fetch the products from database and lists them on screen. Fetching is informed as spinning arrow. Plus-button opens a modal where you can add new product.
 
-### POST 'api/checkLogin'
+Design: My partner
 
-Authentication method with the JSON Web Token. Takes the token as a request. Returns status 200 when successfull, 401 if not.
+### Technology
+* React-Native
+* Node js
+* MongoDB Atlas
+* Virtual Studio Code
+* Android Emulator
+
+
+
+<img src="img/shoppingListLoad.png?raw=true" width="200">
+<img src="img/shoppingList.png?raw=true" width="200">
+<img src="img/shoppingListAdd.png?raw=true" width="200">
