@@ -1,14 +1,13 @@
 
-require('dotenv').config()
-import axios from 'axios'
-const baseUrl =  process.env.DB_URL
-
+import {DB_URL} from "@env"
+const baseUrl = DB_URL
+//const baseUrl = 'http://localhost:3002/api'
 
 
 const getList = () => {
   console.log("NETWORKING-getlist")
   const request = axios.get(`${baseUrl}/list`)
-  //console.log("request ", request)
+  console.log("request ", request)
   return request.then(response => response.data)
 }
 

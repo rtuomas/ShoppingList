@@ -8,12 +8,16 @@ import {
   Image,
   Animated,
   Easing,
-  ImageBackground
+  ImageBackground,
+  RefreshControl
 } from 'react-native';
 import AddNewModal from './components/AddNewModal'
 import PlusButton from './components/PlusButton';
 import ShoppingList from './components/ShoppingList'
 import Network from './services/Networking'
+
+const background = require('./img/ostoskoriBackground.jpg')
+const reloadArrow = require('./img/reload.png')
 
 const styles = StyleSheet.create({
   container: {
@@ -46,6 +50,14 @@ const OstoskoriApp = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [text, setText] = useState(null);
   const [isLoaded, setLoaded] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    console.log("refreshing view...")
+    getList().then(() => setRefreshing(false))
+  };
 
 
   const getList = async () => {
@@ -115,7 +127,7 @@ const OstoskoriApp = () => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./img/ostoskoriBackground.jpg')} resizeMode="cover" style={styles.container}>
+      <ImageBackground source={background} resizeMode="cover" style={styles.container}>
 
         <View style={styles.header}>
           <Text style={styles.header.text}>Ostoskori</Text>
@@ -129,7 +141,14 @@ const OstoskoriApp = () => {
         />
 
         <View style={styles.container}>
-          <ScrollView>
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+              />
+            }
+          >
             {
               isLoaded ?
                 products.map(product =>
@@ -144,7 +163,7 @@ const OstoskoriApp = () => {
               <Animated.View style={{transform: [{rotate: spin}] }} >
                 <Image
                           style={styles.reloadImage}
-                          source={require('./img/reload.png')}
+                          source={reloadArrow}
                 />
               </Animated.View>
 

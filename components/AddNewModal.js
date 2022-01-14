@@ -58,6 +58,7 @@ function AddNewModal( {modalVisible, setModalVisible, setText, buttonAddNew} ) {
         <TextInput
           style={styles.modalContainer.input}
           onChangeText={text => setText(text)}
+          autoFocus={true}
           placeholder="Lisää tuote"
         />
         <Pressable
