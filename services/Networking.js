@@ -1,6 +1,9 @@
 
+import axios from 'axios'
+
 import {DB_URL} from "@env"
 const baseUrl = DB_URL
+
 //const baseUrl = 'http://localhost:3002/api'
 
 
